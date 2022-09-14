@@ -7,6 +7,11 @@
   width: 24px;
   height: 24px;
   align-self: center;
+  transition: opacity 1s linear;
+}
+
+.profile__edit-button:hover {
+  opacity: 0.6;
 }
 
 @media screen and (max-width: 1000px) {
