@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
-  padding: 34px 36px 35px;
+  padding: 34px 36px 37px;
 }
 
 @media screen and (max-width: 1000px) {
