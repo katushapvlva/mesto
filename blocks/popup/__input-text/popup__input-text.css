@@ -2,7 +2,7 @@
   padding: 0;
   border: none;
   outline: none;
-  max-width: 358px;
+  min-width: 358px;
   min-height: 14px;
   font-weight: 400;
   font-size: 14px;
@@ -15,6 +15,6 @@
 
 @media screen and (max-width: 1000px) {
   .popup__input-text {
-    max-width: 238px;
+    min-width: 238px;
   }
 }
