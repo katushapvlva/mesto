@@ -2,6 +2,15 @@
   position: absolute;
   top: -40px;
   right: -40px;
+  width: 32px;
+  height: 32px;
+  background-image: url(../../../images/popup__close.svg);
+  background-color: #000;
+  background-position: center;
+  background-repeat: no-repeat;
+  border: none;
+  padding: 0;
+  cursor: pointer;
   transition: opacity 1s linear;
 }
 
@@ -13,7 +22,7 @@
   .popup__close {
     width: 20px;
     height: 20px;
-    overflow: hidden;
+    background-image: url(../../../images/popup__close_320px.svg);
     top: -36px;
     right: 0;
   }
