@@ -1,12 +1,12 @@
 .profile__info {
   display: grid;
   grid-template-columns: 1fr 24px;
-  gap: 16px 18px;
+  gap: 8px 18px;
 }
 
 @media screen and (max-width: 1000px) {
   .profile__info {
     margin-top: 26px;
-    gap: 14px 10px;
+    gap: 7px 10px;
   }
 }
