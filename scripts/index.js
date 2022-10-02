@@ -1,21 +1,21 @@
-let openPopupEdit = document.querySelector('.profile__edit-button'); // new
-let openPopupAdd = document.querySelector('.profile__add-button'); // new
-let popupEdit = document.querySelector('#popup__edit'); // new
-let popupAdd = document.querySelector('#popup__add'); // new
-let closePopupEdit = document.querySelector('#popup__close-edit'); // new
-let closePopupAdd = document.querySelector('#popup__close-add'); // new
+let openPopupEdit = document.querySelector('.profile__edit-button');
+let openPopupAdd = document.querySelector('.profile__add-button');
+let popupEdit = document.querySelector('#popup__edit');
+let popupAdd = document.querySelector('#popup__add');
+let closePopupEdit = document.querySelector('#popup__close-edit');
+let closePopupAdd = document.querySelector('#popup__close-add');
 
-let formElementProfile = document.querySelector('#profile__form'); // new
-let formElementPlace = document.querySelector('#place__form'); // new
-let nameInput = formElementProfile.querySelector('.popup__input-text_type_name'); // new
-let jobInput = formElementProfile.querySelector('.popup__input-text_type_description'); // new
-let placeInput = formElementPlace.querySelector('.popup__input-text_type_place'); // new
-let linkInput = formElementPlace.querySelector('.popup__input-text_type_link'); // new
+let formElementProfile = document.querySelector('#profile__form');
+let formElementPlace = document.querySelector('#place__form');
+let nameInput = formElementProfile.querySelector('.popup__input-text_type_name');
+let jobInput = formElementProfile.querySelector('.popup__input-text_type_description');
+let placeInput = formElementPlace.querySelector('.popup__input-text_type_place');
+let linkInput = formElementPlace.querySelector('.popup__input-text_type_link');
 
 let nameProfile = document.querySelector('.profile__name');
 let jobProfile = document.querySelector('.profile__description');
-let placeTitle = document.querySelector('.elements__title'); // new
-let linkPhoto = document.querySelector('.elements__photo'); // new
+let placeTitle = document.querySelector('.elements__title');
+let linkPhoto = document.querySelector('.elements__photo');
 
 const initialCards = [ // new
   {
@@ -44,7 +44,7 @@ const initialCards = [ // new
   }
 ];
 
-initialCards.forEach(function (item) {
+initialCards.forEach((item) => { // new
   const containerElements = document.querySelector('.elements');
   const cardTemplate = document.querySelector('#card').content;
   const cardElement = cardTemplate.cloneNode(true);
@@ -55,34 +55,45 @@ initialCards.forEach(function (item) {
 })
 
 function popupToggle(popup) { // new
-  popup.classList.toggle('popup_opened'); // new
+  popup.classList.toggle('popup_opened');
   nameInput.value = nameProfile.textContent;
   jobInput.value = jobProfile.textContent;
 }
 
-function formSubmitHandler (evt) {
+function formSubmitHandlerEdit (evt) {
   evt.preventDefault();
 
   nameProfile.textContent = nameInput.value;
   jobProfile.textContent = jobInput.value;
 
-  // placeTitle.textContent = placeInput.value; // new
-  // linkPhoto.textContent = linkInput.value; // new
+  popupToggle(popupEdit);
+}
 
-  popupToggle(popupEdit); // "заглушка"
+function formSubmitHandlerAdd (evt) {
+  evt.preventDefault();
+
+  const containerElements = document.querySelector('.elements');
+  const cardTemplate = document.querySelector('#card').content;
+  const cardElement = cardTemplate.cloneNode(true);
+
+  cardElement.querySelector('#photo').src = linkInput.value;
+  cardElement.querySelector('#title').textContent = placeInput.value;
+  containerElements.prepend(cardElement);
+
+  popupToggle(popupAdd)
 }
 
 openPopupEdit.addEventListener('click', () => {
   popupToggle(popupEdit);
-}); // new
+}); 
 openPopupAdd.addEventListener('click', () => {
   popupToggle(popupAdd);
-}); // new
+}); 
 closePopupEdit.addEventListener('click', () => {
   popupToggle(popupEdit);
-}); // new
+}); 
 closePopupAdd.addEventListener('click', () => {
   popupToggle(popupAdd);
-}); // new
-formElementProfile.addEventListener('submit', formSubmitHandler); // new
-formElementPlace.addEventListener('submit', formSubmitHandler); // new
+}); 
+formElementProfile.addEventListener('submit', formSubmitHandlerEdit); 
+formElementPlace.addEventListener('submit', formSubmitHandlerAdd); 
