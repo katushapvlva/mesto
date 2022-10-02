@@ -56,6 +56,10 @@ initialCards.forEach((item) => { // new
     event.target.classList.toggle('elements__like-button_active');
   })
 
+  cardElement.querySelector('#delete').addEventListener('click', (event) => {
+    event.target.closest('.elements__element').remove();
+  })
+
   containerElements.append(cardElement);
 })
 
@@ -91,6 +95,10 @@ function formSubmitHandlerAdd (evt) { // new
   cardElement.querySelector('#like').addEventListener('click', (event) => {
     event.target.classList.toggle('elements__like-button_active');
   });
+
+  cardElement.querySelector('#delete').addEventListener('click', (event) => {
+    event.target.closest('.elements__element').remove();
+  })
 
   containerElements.prepend(cardElement);
 
