@@ -51,13 +51,22 @@ initialCards.forEach((item) => { // new
 
   cardElement.querySelector('#photo').src = item.link;
   cardElement.querySelector('#title').textContent = item.name;
+  
+  cardElement.querySelector('#like').addEventListener('click', (event) => {
+    event.target.classList.toggle('elements__like-button_active');
+  })
+
   containerElements.append(cardElement);
 })
 
 function popupToggle(popup) { // new
   popup.classList.toggle('popup_opened');
+
   nameInput.value = nameProfile.textContent;
   jobInput.value = jobProfile.textContent;
+
+  linkInput.value = "";
+  placeInput.value = "";
 }
 
 function formSubmitHandlerEdit (evt) {
@@ -69,7 +78,7 @@ function formSubmitHandlerEdit (evt) {
   popupToggle(popupEdit);
 }
 
-function formSubmitHandlerAdd (evt) {
+function formSubmitHandlerAdd (evt) { // new
   evt.preventDefault();
 
   const containerElements = document.querySelector('.elements');
@@ -78,6 +87,11 @@ function formSubmitHandlerAdd (evt) {
 
   cardElement.querySelector('#photo').src = linkInput.value;
   cardElement.querySelector('#title').textContent = placeInput.value;
+  
+  cardElement.querySelector('#like').addEventListener('click', (event) => {
+    event.target.classList.toggle('elements__like-button_active');
+  });
+
   containerElements.prepend(cardElement);
 
   popupToggle(popupAdd)
