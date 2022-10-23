@@ -11,11 +11,11 @@ const popupImgTitle = popupImg.querySelector('#title');
 const closePopupEdit = document.querySelector('#popup__close-edit');
 const closePopupAdd = document.querySelector('#popup__close-add');
 
-// // new
-// const popupOverlays = document.querySelectorAll('.popup');
-// popupOverlays.forEach((event) => event.addEventListener('mousedown', () => {
-//   closePopup(event);
-// }));
+// new
+const popupOverlays = document.querySelectorAll('.popup');
+popupOverlays.forEach((item) => item.addEventListener('click', (event) => {
+  closePopup(event.target);
+}));
 
 const formElementProfile = document.forms['profile-form'];
 const formElementPlace = document.forms['place-form'];
@@ -111,7 +111,6 @@ function openCard(event) {
 }
 
 const closeButtons = document.querySelectorAll('.popup__close');
-
 closeButtons.forEach((button) => {
   const popup = button.closest('.popup');
 
@@ -137,7 +136,6 @@ function handlerKey(event) {
   }
 }
 document.addEventListener('keydown', handlerKey);
-
 
 function handlerFormSubmitEdit (evt) {
   evt.preventDefault();
