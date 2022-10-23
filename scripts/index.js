@@ -11,12 +11,24 @@ const popupImgTitle = popupImg.querySelector('#title');
 const closePopupEdit = document.querySelector('#popup__close-edit');
 const closePopupAdd = document.querySelector('#popup__close-add');
 
+// // new
+// const popupOverlays = document.querySelectorAll('.popup');
+// popupOverlays.forEach((event) => event.addEventListener('mousedown', () => {
+//   closePopup(event);
+// }));
+
 const formElementProfile = document.forms['profile-form'];
 const formElementPlace = document.forms['place-form'];
 const nameInput = formElementProfile.querySelector('.popup__input-text_type_name');
 const jobInput = formElementProfile.querySelector('.popup__input-text_type_description');
 const placeInput = formElementPlace.querySelector('.popup__input-text_type_place');
 const linkInput = formElementPlace.querySelector('.popup__input-text_type_link');
+
+// new
+const formErrorNameInProfile = formElementProfile.querySelectorAll(`.${nameInput.id}-error`);
+const formErrorJobInProfile = formElementProfile.querySelectorAll(`.${jobInput.id}-error`);
+const formErrorTextInPlace = formElementPlace.querySelector(`.${placeInput.id}-error`);
+const formErrorUrlInPlace = formElementPlace.querySelector(`.${linkInput.id}-error`);
 
 const nameProfile = document.querySelector('.profile__name');
 const jobProfile = document.querySelector('.profile__description');
@@ -73,7 +85,7 @@ initialCards.forEach((item) => {
   containerElements.append(cardElement);
 });
 
-function createNewCard() { // new
+function createNewCard() { 
   const item = {
     name: placeInput.value,
     link: linkInput.value,
@@ -115,6 +127,17 @@ function openPopup(popup) {
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
 }
+
+// new
+function handlerKey(event) {
+  if (event.key === 'Escape') {
+    closePopup(popupEdit);
+    closePopup(popupAdd);
+    closePopup(popupImg);
+  }
+}
+document.addEventListener('keydown', handlerKey);
+
 
 function handlerFormSubmitEdit (evt) {
   evt.preventDefault();

@@ -34,9 +34,12 @@
         <form class="popup__form" id="profile__form" name="profile-form">
           <fieldset class="popup__form-item">
             <input class="popup__input-text popup__input-text_type_name" type="text" placeholder="Имя" 
-              value="Жак-Ив Кусто" name="name__input">
+              value="Жак-Ив Кусто" name="name__input" minlength="2" maxlength="40" required id="name-input">
+            <span class="popup__input-error"></span>
             <input class="popup__input-text popup__input-text_type_description" type="text" placeholder="О себе"
-              value="Исследователь океана" name="description__input">
+              value="Исследователь океана" name="description__input" minlength="2" maxlength="200" required
+                id="description-input">
+            <span class="popup__input-error"></span>
           </fieldset>
           <button class="popup__save-button" type="submit">Сохранить</button>
         </form>
@@ -50,9 +53,11 @@
         <form class="popup__form" id="place__form" name="place-form">
           <fieldset class="popup__form-item">
             <input class="popup__input-text popup__input-text_type_place" type="text" placeholder="Название" 
-              value="" name="place__input">
-            <input class="popup__input-text popup__input-text_type_link" type="text" 
-              placeholder="Ссылка на картинку" value="" name="link__input">
+              value="" name="place__input" id="place-input" required minlength="2" maxlength="30">
+            <span class="popup__input-error"></span>
+            <input class="popup__input-text popup__input-text_type_link" type="url" 
+              placeholder="Ссылка на картинку" value="" name="link__input" id="link-input" required>
+            <span class="popup__input-error popup__input-error_type_url"></span>
           </fieldset>
           <button class="popup__save-button" type="submit">Создать</button>
         </form>
