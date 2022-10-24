@@ -11,12 +11,6 @@ const popupImgTitle = popupImg.querySelector('#title');
 const closePopupEdit = document.querySelector('#popup__close-edit');
 const closePopupAdd = document.querySelector('#popup__close-add');
 
-// new
-const popupOverlays = document.querySelectorAll('.popup');
-popupOverlays.forEach((item) => item.addEventListener('click', (event) => {
-  closePopup(event.target);
-}));
-
 const formElementProfile = document.forms['profile-form'];
 const formElementPlace = document.forms['place-form'];
 const nameInput = formElementProfile.querySelector('.popup__input-text_type_name');
@@ -24,16 +18,19 @@ const jobInput = formElementProfile.querySelector('.popup__input-text_type_descr
 const placeInput = formElementPlace.querySelector('.popup__input-text_type_place');
 const linkInput = formElementPlace.querySelector('.popup__input-text_type_link');
 
-// new
-const formErrorNameInProfile = formElementProfile.querySelectorAll(`.${nameInput.id}-error`);
-const formErrorJobInProfile = formElementProfile.querySelectorAll(`.${jobInput.id}-error`);
-const formErrorTextInPlace = formElementPlace.querySelector(`.${placeInput.id}-error`);
-const formErrorUrlInPlace = formElementPlace.querySelector(`.${linkInput.id}-error`);
-
 const nameProfile = document.querySelector('.profile__name');
 const jobProfile = document.querySelector('.profile__description');
 const placeTitle = document.querySelector('.elements__title');
 const linkPhoto = document.querySelector('.elements__photo');
+
+const validation = { // new
+  formSelector: '.popup__form',
+  inputSelector: '.popup__input',
+  submitButtonSelector: '.popup__button',
+  inactiveButtonClass: 'popup__button_disabled',
+  inputErrorClass: 'popup__input_type_error',
+  errorClass: 'popup__error_visible'
+}; 
 
 const initialCards = [ 
   {
@@ -126,6 +123,18 @@ function openPopup(popup) {
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
 }
+
+// new
+function closePopupClickOnOverlay(event) {
+  if (event.target == event.currentTarget) {
+    closePopup(popupEdit);
+    closePopup(popupAdd);
+    closePopup(popupImg);
+  }
+}
+popupEdit.addEventListener('click', closePopupClickOnOverlay);
+popupAdd.addEventListener('click', closePopupClickOnOverlay);
+popupImg.addEventListener('click', closePopupClickOnOverlay);
 
 // new
 function handlerKey(event) {
