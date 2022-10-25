@@ -23,13 +23,12 @@ const jobProfile = document.querySelector('.profile__description');
 const placeTitle = document.querySelector('.elements__title');
 const linkPhoto = document.querySelector('.elements__photo');
 
-const validation = { // new
+const selectorsAndClasses = { // neW
   formSelector: '.popup__form',
-  inputSelector: '.popup__input',
-  submitButtonSelector: '.popup__button',
-  inactiveButtonClass: 'popup__button_disabled',
-  inputErrorClass: 'popup__input_type_error',
-  errorClass: 'popup__error_visible'
+  inputSelector: '.popup__input-text',
+  submitButtonSelector: '.popup__save-button',
+  inactiveButtonClass: 'popup__save-button_disabled',
+  inputErrorClass: 'popup__input-text_error'
 }; 
 
 const initialCards = [ 
