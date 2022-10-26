@@ -27,7 +27,7 @@
       </section>
     </main>
 
-    <section class="popup" id="popup-edit">
+    <div class="popup" id="popup-edit">
       <div class="popup__container">
         <button class="popup__close" id="popup__close-edit" type="button"></button>
         <h2 class="popup__title">Редактировать профиль</h2>
@@ -44,9 +44,9 @@
           <button class="popup__save-button" type="submit">Сохранить</button>
         </form>
       </div>
-    </section>
+    </div>
 
-    <section class="popup" id="popup-add">
+    <div class="popup" id="popup-add">
       <div class="popup__container">
         <button class="popup__close" id="popup__close-add" type="button"></button>
         <h2 class="popup__title">Новое место</h2>
@@ -62,15 +62,15 @@
           <button class="popup__save-button popup__save-button_disabled" type="submit" disabled>Создать</button>
         </form>
       </div>
-    </section>
+    </div>
 
-    <section class="popup popup_type_img" id="popup-img">
+    <div class="popup popup_type_img" id="popup-img">
       <div class="popup__container popup__container_type_img">
         <img class="popup__image" id="img" src="./" alt="">
         <h2 class="popup__title popup__title_type_img" id="title"></h2>
         <button class="popup__close" id="close" type="button"></button>
       </div>
-    </section>
+    </div>
 
     <template id="card">
       <article class="elements__element" id="element">
@@ -87,6 +87,7 @@
       <p class="footer__copyright">&#169; 2022. Катя Павлова</p>
     </footer>
   </div>
+  <script src="./scripts/data.js"></script>
   <script src="./scripts/index.js"></script>
   <script src="./scripts/validate.js"></script>
 </body>

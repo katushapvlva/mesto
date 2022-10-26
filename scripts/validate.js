@@ -1,12 +1,12 @@
 const showInputError = (formElement, inputElement, errorMessage, selectorsAndClasses) => {
   const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
-  inputElement.classList.add(selectorsAndClasses.inputErrorClass); // 'popup__input-text_error'
+  inputElement.classList.add(selectorsAndClasses.inputErrorClass); 
   errorElement.textContent = errorMessage;
 }
 
 const hideInputError = (formElement, inputElement, selectorsAndClasses) => {
   const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
-  inputElement.classList.remove(selectorsAndClasses.inputErrorClass); // 'popup__input-text_error'
+  inputElement.classList.remove(selectorsAndClasses.inputErrorClass); 
   errorElement.textContent = '';
 };
 
@@ -19,8 +19,8 @@ const checkInputValidity = (formElement, inputElement, selectorsAndClasses) => {
 };
 
 const setEventListeners = (formElement, selectorsAndClasses) => {
-  const inputList = Array.from(formElement.querySelectorAll(selectorsAndClasses.inputSelector)); // '.popup__input-text'
-  const buttonElement = formElement.querySelector(selectorsAndClasses.submitButtonSelector); // '.popup__save-button'
+  const inputList = Array.from(formElement.querySelectorAll(selectorsAndClasses.inputSelector));
+  const buttonElement = formElement.querySelector(selectorsAndClasses.submitButtonSelector); 
   
   inputList.forEach((inputElement) => {
     inputElement.addEventListener('input', function () {
@@ -30,8 +30,8 @@ const setEventListeners = (formElement, selectorsAndClasses) => {
   });  
 };
 
-const enableValidation = (selectorsAndClasses) => {
-  const formList = Array.from(document.querySelectorAll(selectorsAndClasses.formSelector)); // '.popup__form'
+const enableValidation = ({formSelector, ...selectorsAndClasses}) => {
+  const formList = Array.from(document.querySelectorAll(formSelector));
   formList.forEach((formElement) => {
     formElement.addEventListener('submit', function (evt) {
       evt.preventDefault();
@@ -46,15 +46,23 @@ function hasInvalidInput(inputList) {
   });
 }
 
-function toggleButtonState(inputList, buttonElement, selectorsAndClasses) {
+function toggleButtonState(inputList, buttonElement) {
   if (hasInvalidInput(inputList)) {
-    buttonElement.classList.add(selectorsAndClasses.inactiveButtonClass); // 'popup__save-button_disabled'
-    buttonElement.setAttribute('disabled', true);
+    disabledButton(buttonElement);
   }
   else {
-     buttonElement.classList.remove(selectorsAndClasses.inactiveButtonClass); // 'popup__save-button_disabled'
-     buttonElement.removeAttribute('disabled');
+    activateButton(buttonElement);
   }
+}
+
+function disabledButton(buttonElement) { // new
+  buttonElement.classList.add(selectorsAndClasses.inactiveButtonClass);
+  buttonElement.setAttribute('disabled', true);
+}
+
+function activateButton(buttonElement) { // new
+  buttonElement.classList.remove(selectorsAndClasses.inactiveButtonClass);
+  buttonElement.removeAttribute('disabled');
 }
 
 enableValidation(selectorsAndClasses);
